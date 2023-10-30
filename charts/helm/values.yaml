@@ -1,3 +1,6 @@
 ingressName: pgvirtual-ingress
 serviceName: isibet-app
 path: /isibet
+service:
+  type: LoadBalancer
+  port: 80

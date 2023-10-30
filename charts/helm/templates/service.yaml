@@ -1,0 +1,14 @@
+{{/* vim: set filetype=mustache: */}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "com.pgvirtual.fullname" . }}
+  labels: {{- include "com.pgvirtual.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector: {{- include "com.pgvirtual.selectorLabels" . | nindent 4 }}
